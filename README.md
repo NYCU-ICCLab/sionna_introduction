@@ -33,23 +33,29 @@ Sionna支援完整通訊的建模與模擬：
 ### 範例一：Link Level通訊模擬
 下圖為一個簡單的通訊系統模擬架構，
 ![sionna_simulate_basic_encode](fig/sionna_simulate_basic_encode.png)
+![alt text](fig/crc_vs_ldpc.png)
 
-### 範例二：
+### 範例二：Neural Receiver
+### 範例三：Ray tracing模擬
+
+![alt text](fig/demo_ray_tracing.png)
+![alt text](fig/demo_radio_map.png)
 
 
+## Setup
 
-
-
-setup:
-windows
-到BIOS打開虛擬化
-安裝WSL
-安裝WSL的ubuntu
-(ubuntu的資料夾路徑在檔案總管的網路的位置)
+### Windows
+* 到BIOS打開虛擬化
+* 安裝WSL
+* 安裝WSL的ubuntu (ubuntu的資料夾路徑在檔案總管的網路的位置)
+* 更新ubuntu
+```
 sudo apt update && sudo apt upgrade -y
 sudo apt install llvm
-下載&安裝conda
-建立虛擬環境
+```
+* 下載&安裝conda
+* 建立虛擬環境
+* 安裝套件
 ```
 pip install sionna
 pip install jupyter notebook
