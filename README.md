@@ -28,30 +28,35 @@ Sionna支援完整通訊的建模與模擬：
 
 
 
-## 實際應用範例
-
+## 實際應用
+### 基礎教學
+規劃中...
 ### 範例一：Link Level通訊模擬
-下圖為一個簡單的通訊系統模擬架構，
+[Demo_LDPC_vs_Polar](sample_code/Demo_LDPC_vs_Polar.ipynb)
+下圖為一個簡單的通訊系統模擬架構，從訊號源到Channel coding與Modulation，到經過Channel後的Demodulation以及Channel decoding，最後得到資料
 ![sionna_simulate_basic_encode](fig/sionna_simulate_basic_encode.png)
-![alt text](fig/crc_vs_ldpc.png)
+![alt text](fig/ldpc_vs_polar.png)
 
-### 範例二：Neural Receiver
-### 範例三：Ray tracing模擬
+### 範例二：Ray tracing模擬
+[Demo_ray_tracing](sample_code/Demo_ray_tracing.ipynb)
 
 ![alt text](fig/demo_ray_tracing.png)
 ![alt text](fig/demo_radio_map.png)
-
+### 範例三：Neural Receiver
+規劃中...
 
 ## Setup
 
-### Windows
+### Windows WSL
 * 到BIOS打開虛擬化
-* 用系統管理員權限打開powershell並安裝WSL
+* 用系統管理員權限打開Powershell並安裝WSL
 ```
 wsl --install
 ```
-* 安裝WSL的ubuntu，去windows的應用程式商店下載 (ubuntu的資料夾路徑會出現在檔案總管的linux的位置)
-* 更新ubuntu
+* 安裝WSL的Ubuntu22.04，去Windows的應用程式商店下載 (之後Ubuntu的資料夾路徑會出現在檔案總管的Linux的位置)
+* 打開Ubuntu，並參考以下Ubuntu的教學
+### Ubuntu
+* 打開Terminal並輸入以下指令
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install llvm
@@ -74,27 +79,30 @@ pip install jupyter notebook
 conda install -c conda-forge libstdcxx-ng
 ```
 
-安裝cuda
+* 安裝Cuda，以Cuda11.8為例 (如果可以使用的話)
 ```
 wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
 sudo sh cuda_11.8.0_520.61.05_linux.run --silent --toolkit
 ```
-安裝cudnn(需先下載)
+安裝Cudnn(需先下載，以cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz為例)
 ```
 tar -xvf cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz
 sudo cp cudnn-linux-x86_64-8.9.7.29_cuda11-archive/include/cudnn* /usr/local/cuda-11.8/include
 sudo cp cudnn-linux-x86_64-8.9.7.29_cuda11-archive/lib/libcudnn* /usr/local/cuda-11.8/lib64/
 sudo chmod a+r /usr/local/cuda-11.8/include/cudnn* /usr/local/cuda-11.8/lib64/libcudnn*
 ```
-設定cuda路徑，在.bashrc加上
+設定Cuda路徑，在.bashrc裡面加上
 ```
 export CUDA_HOME=/usr/local/cuda-11.8
 export PATH=$PATH:$CUDA_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
 ```
+在Terminal輸入
+```
 source .bashrc
+```
 
-處理WSL的mitsuba(失敗)
+處理WSL的Mitsuba環境(失敗)
 ```
 bash NVIDIA-Linux-x86_64-*.run -x --target driver
 
