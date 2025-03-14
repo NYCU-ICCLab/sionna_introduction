@@ -29,9 +29,9 @@ Sionna支援完整通訊的建模與模擬：
 
 
 ## 實際應用
-### 基礎教學
-規劃中...
-### 應用一：Link Level通訊模擬
+### 基礎教學 : 簡易End-to-end通訊模擬
+[Demo_sionna_basic](sample_code/Demo_sionna_basic.ipynb)
+### 應用一：系統性能評估
 [Demo_LDPC_vs_Polar](sample_code/Demo_LDPC_vs_Polar.ipynb)
 下圖為一個簡單的通訊系統模擬架構，從訊號源到Channel coding與Modulation，到經過Channel後的Demodulation以及Channel decoding，最後得到資料
 ![sionna_simulate_basic_encode](fig/sionna_simulate_basic_encode.png)
