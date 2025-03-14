@@ -31,18 +31,18 @@ Sionna支援完整通訊的建模與模擬：
 ## 實際應用
 ### 基礎教學
 規劃中...
-### 範例一：Link Level通訊模擬
+### 應用一：Link Level通訊模擬
 [Demo_LDPC_vs_Polar](sample_code/Demo_LDPC_vs_Polar.ipynb)
 下圖為一個簡單的通訊系統模擬架構，從訊號源到Channel coding與Modulation，到經過Channel後的Demodulation以及Channel decoding，最後得到資料
 ![sionna_simulate_basic_encode](fig/sionna_simulate_basic_encode.png)
 ![alt text](fig/ldpc_vs_polar.png)
 
-### 範例二：Ray tracing模擬
+### 應用二：Ray tracing模擬
 [Demo_ray_tracing](sample_code/Demo_ray_tracing.ipynb)
 
 ![alt text](fig/demo_ray_tracing.png)
 ![alt text](fig/demo_radio_map.png)
-### 範例三：Neural Receiver
+### 應用三：Neural Receiver
 規劃中...
 
 ## Setup
