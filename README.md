@@ -16,10 +16,11 @@ Sionna建立在TensorFlow之上，具有以下優勢：
 ### Link Level通訊系統設計
 
 Sionna支援完整通訊的建模與模擬：
-- 訊號源編碼/解碼
-- 調變/解調
+- 訊號源生成
 - 通道編碼/解碼
+- 調變/解調
 - 通道估測
+- 性能評估
 
 ### 高自由度
 
@@ -31,19 +32,56 @@ Sionna支援完整通訊的建模與模擬：
 ## 實際應用
 ### 基礎教學 : 簡易End-to-end通訊模擬
 [Demo_sionna_basic](sample_code/Demo_sionna_basic.ipynb)
+在基礎教學中將學習如何使用Sionna建立一個簡單的End-to-end通訊系統。從二進位的原始資料到訊號的Modulation、Channel、Demodulation，最後還原出二進位原始資料並計算其Bit error rate(BER)
+<figure>
+  <img src="fig/sionna_simulate_basic.png">
+  <figcaption>圖1：簡易End-to-end通訊架構</figcaption>
+</figure>
+
 ### 應用一：系統性能評估
 [Demo_LDPC_vs_Polar](sample_code/Demo_LDPC_vs_Polar.ipynb)
-下圖為一個簡單的通訊系統模擬架構，從訊號源到Channel coding與Modulation，到經過Channel後的Demodulation以及Channel decoding，最後得到資料
-![sionna_simulate_basic_encode](fig/sionna_simulate_basic_encode.png)
-![alt text](fig/ldpc_vs_polar.png)
 
-### 應用二：Ray tracing模擬
+在應用一中建立了一個包含Channel coding具有功能的通訊系統模擬架構(如圖2)，包含了從二進位的原始資料生成到Channel coding與Modulation，到經過Channel後的Demodulation以及Channel decoding，並在最後還原出二進位的原始資料，以及比較LDPC和Polar兩種編碼方式的BER測試結果(圖3)。
+<figure>
+  <img src="fig/sionna_simulate_basic_encode.png">
+  <figcaption>圖2：簡易End-to-end通訊架構</figcaption>
+</figure>
+
+
+<figure>
+  <img src="fig/ldpc_vs_polar.png">
+  <figcaption>圖3：LDPC和Polar的BER測試結果</figcaption>
+</figure>
+
+
+
+### 應用二：Neural Receiver
+[Demo_neural_receiver](sample_code/Demo_neural_receiver.ipynb)
+在應用二中建立了由神經網路構成的訊號接收器，從Channel estimation到Demodulation的步驟全部由AI來計算，並和基於LS estimation+Equalization以及Perfect CSI+Equalization的方法來進行比較(如圖4)。比較結果如圖5。
+<figure>
+  <img src="fig/sionna_neural_vs_baseline.png">
+  <figcaption>圖4：Neural receiver和Baseline的比較結果</figcaption>
+</figure>
+
+<figure>
+  <img src="fig/neural_vs_baseline.png">
+  <figcaption>圖5：Neural receiver和Baseline的比較結果</figcaption>
+</figure>
+
+
+### 應用三：Ray tracing模擬
 [Demo_ray_tracing](sample_code/Demo_ray_tracing.ipynb)
+在應用三中將實作基於交大校園地圖的Ray tracing模擬，包含了點對點的Ray tracing計算+圖像化(圖6)以及取得校園內的Radio map(圖7)。
 
-![alt text](fig/demo_ray_tracing.png)
-![alt text](fig/demo_radio_map.png)
-### 應用三：Neural Receiver
-規劃中...
+<figure>
+  <img src="fig/demo_ray_tracing.png">
+  <figcaption>圖6：點對點的Ray tracing模擬結果</figcaption>
+</figure>
+<figure>
+  <img src="fig/demo_radio_map.png">
+  <figcaption>圖7：交大校園Radio map</figcaption>
+</figure>
+
 
 ## Setup
 
@@ -102,7 +140,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
 source .bashrc
 ```
 
-處理WSL的Mitsuba環境(失敗)
+處理WSL中Mitsuba的GPU加速問題(目前還是失敗狀態，無法在WSL環境中來用GPU實作Ray tracing，只能用CPU)
 ```
 bash NVIDIA-Linux-x86_64-*.run -x --target driver
 
