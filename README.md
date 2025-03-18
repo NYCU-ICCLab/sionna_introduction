@@ -32,6 +32,7 @@ Sionna支援完整通訊的建模與模擬：
 ## 實際應用
 ### 基礎教學 : 簡易End-to-end通訊模擬
 [Demo_sionna_basic](sample_code/Demo_sionna_basic.ipynb)
+
 在基礎教學中將學習如何使用Sionna建立一個簡單的End-to-end通訊系統。從二進位的原始資料到訊號的Modulation、Channel、Demodulation，最後還原出二進位原始資料並計算其Bit error rate(BER)
 <figure>
   <img src="fig/sionna_simulate_basic.png">
@@ -57,6 +58,7 @@ Sionna支援完整通訊的建模與模擬：
 
 ### 應用二：Neural Receiver
 [Demo_neural_receiver](sample_code/Demo_neural_receiver.ipynb)
+
 在應用二中建立了由神經網路構成的訊號接收器，從Channel estimation到Demodulation的步驟全部由AI來計算，並和基於LS estimation+Equalization以及Perfect CSI+Equalization的方法來進行比較(如圖4)。比較結果如圖5。
 <figure>
   <img src="fig/sionna_neural_vs_baseline.png">
@@ -71,6 +73,7 @@ Sionna支援完整通訊的建模與模擬：
 
 ### 應用三：Ray tracing模擬
 [Demo_ray_tracing](sample_code/Demo_ray_tracing.ipynb)
+
 在應用三中將實作基於交大校園地圖的Ray tracing模擬，包含了點對點的Ray tracing計算+圖像化(圖6)以及取得校園內的Radio map(圖7)。
 
 <figure>
