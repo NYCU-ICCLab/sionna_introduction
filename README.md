@@ -94,12 +94,13 @@ Sionna支援完整通訊的建模與模擬：
 ```
 wsl --install
 ```
-* 安裝WSL的Ubuntu22.04，去Windows的應用程式商店下載 (之後Ubuntu的資料夾路徑會出現在檔案總管的Linux的位置)
-* 打開Ubuntu，並參考以下Ubuntu的教學
+* 安裝WSL的Ubuntu22.04，去Microsoft Store下載 (之後Ubuntu的資料夾路徑會出現在檔案總管的Linux的位置)
+* 按Windows鍵，搜尋Ubuntu並開啟，並參考以下Ubuntu的教學
 ### Ubuntu
 * 打開Terminal並輸入以下指令
 ```
 sudo apt update && sudo apt upgrade -y
+sudo apt install build-essential
 sudo apt install llvm
 ```
 * 下載&安裝conda
@@ -114,25 +115,29 @@ conda activate sionna_env
 ```
 * 安裝套件
 ```
-pip install tensorflow==2.14.0
 pip install sionna
+pip install tensorflow==2.14.0
+pip install numpy==1.23.5
 pip install jupyter notebook
 conda install -c conda-forge libstdcxx-ng
 ```
 
-* 安裝Cuda，以Cuda11.8為例 (如果可以使用的話)
+#### Cuda環境設定(如果可以使用的話)
+* 需先在Windows上安裝Nvidia driver(請到官網下載安裝)
+* 安裝Cuda，以Cuda11.8為例 
 ```
 wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
 sudo sh cuda_11.8.0_520.61.05_linux.run --silent --toolkit
 ```
-安裝Cudnn(需先下載，以cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz為例)
+* 安裝Cudnn，以Cudnn11.x為例
 ```
+wget https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz
 tar -xvf cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz
 sudo cp cudnn-linux-x86_64-8.9.7.29_cuda11-archive/include/cudnn* /usr/local/cuda-11.8/include
 sudo cp cudnn-linux-x86_64-8.9.7.29_cuda11-archive/lib/libcudnn* /usr/local/cuda-11.8/lib64/
 sudo chmod a+r /usr/local/cuda-11.8/include/cudnn* /usr/local/cuda-11.8/lib64/libcudnn*
 ```
-設定Cuda路徑，在.bashrc裡面加上
+* 設定Cuda路徑，在```~/.bashrc```裡面加上
 ```
 export CUDA_HOME=/usr/local/cuda-11.8
 export PATH=$PATH:$CUDA_HOME/bin
@@ -144,16 +149,15 @@ source .bashrc
 ```
 
 處理WSL中Mitsuba的GPU加速問題(目前還是失敗狀態，無法在WSL環境中來用GPU實作Ray tracing，只能用CPU)
+參考[Mitsuba on WSL2](https://mitsuba.readthedocs.io/en/stable/src/optix_setup.html)
 ```
 bash NVIDIA-Linux-x86_64-*.run -x --target driver
 
 mkdir driver-dist
 
-sudo ln -s /usr/lib/wsl/lib/libcuda.so /usr/lib/x86_64-linux-gnu/
+$ ln -s /usr/lib/wsl/lib/libcuda.so /usr/lib/x86_64-linux-gnu/
 
-mkdir driver-dist && cp driver/libnvoptix.so.* driver-dist/libnvoptix.so.1 && cp driver/libnvidia-ptxjitcompiler.so.* driver-dist/libnvidia-ptxjitcompiler.so.1 && cp driver/libnvidia-rtcore.so.* driver-dist && cp driver/libnvidia-compiler.so.* driver-dist && cp driver/nvoptix.bin driver-dist && explorer.exe driver-dist && explorer.exe "C:\Windows\System32\lxss\lib"
-
-cp driver/libnvoptix.so.* driver-dist/libnvoptix.so.1 && cp driver/libnvidia-ptxjitcompiler.so.* driver-dist/libnvidia-ptxjitcompiler.so.1 && cp driver/libnvidia-rtcore.so.* driver-dist && cp driver/libnvidia* driver-dist && explorer.exe driver-dist && explorer.exe "C:\Windows\System32\lxss\lib"
+$ mkdir driver-dist && cp driver/libnvoptix.so.* driver-dist/libnvoptix.so.1 && cp driver/libnvidia-ptxjitcompiler.so.* driver-dist/libnvidia-ptxjitcompiler.so.1 && cp driver/libnvidia-rtcore.so.* driver-dist && cp driver/libnvidia-gpucomp.so.* driver-dist && cp driver/nvoptix.bin driver-dist && explorer.exe driver-dist && explorer.exe "C:\Windows\System32\lxss\lib"
 ```
 Reference
 * NVIDIA website: https://developer.nvidia.com/sionna
