@@ -145,7 +145,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
 ```
 在Terminal輸入
 ```
-source .bashrc
+source ~/.bashrc
 ```
 
 處理WSL中Mitsuba的GPU加速問題(目前還是失敗狀態，無法在WSL環境中來用GPU實作Ray tracing，只能用CPU)
