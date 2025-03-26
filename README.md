@@ -148,17 +148,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
 source ~/.bashrc
 ```
 
-處理WSL中Mitsuba的GPU加速問題(目前還是失敗狀態，無法在WSL環境中來用GPU實作Ray tracing，只能用CPU)
+處理WSL中Mitsuba的GPU加速問題
 參考[Mitsuba on WSL2](https://mitsuba.readthedocs.io/en/stable/src/optix_setup.html)
-```
-bash NVIDIA-Linux-x86_64-*.run -x --target driver
 
-mkdir driver-dist
 
-$ ln -s /usr/lib/wsl/lib/libcuda.so /usr/lib/x86_64-linux-gnu/
-
-$ mkdir driver-dist && cp driver/libnvoptix.so.* driver-dist/libnvoptix.so.1 && cp driver/libnvidia-ptxjitcompiler.so.* driver-dist/libnvidia-ptxjitcompiler.so.1 && cp driver/libnvidia-rtcore.so.* driver-dist && cp driver/libnvidia-gpucomp.so.* driver-dist && cp driver/nvoptix.bin driver-dist && explorer.exe driver-dist && explorer.exe "C:\Windows\System32\lxss\lib"
-```
 Reference
 * NVIDIA website: https://developer.nvidia.com/sionna
 * Sionna tutorial: https://nvlabs.github.io/sionna/index.html
