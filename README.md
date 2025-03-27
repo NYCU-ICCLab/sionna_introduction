@@ -152,7 +152,7 @@ source ~/.bashrc
 參考[Mitsuba on WSL2](https://mitsuba.readthedocs.io/en/stable/src/optix_setup.html)
 
 
-Reference
+## References
 * NVIDIA website: https://developer.nvidia.com/sionna
 * Sionna tutorial: https://nvlabs.github.io/sionna/index.html
 * Sionna GitHub: https://github.com/NVlabs/sionna
