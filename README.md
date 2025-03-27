@@ -115,7 +115,7 @@ conda activate sionna_env
 ```
 * 安裝套件
 ```
-pip install sionna==0.19
+pip install sionna==0.19.2
 pip install tensorflow==2.14.0
 pip install numpy==1.23.5
 pip install jupyter notebook
