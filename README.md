@@ -143,13 +143,12 @@ export CUDA_HOME=/usr/local/cuda-11.8
 export PATH=$PATH:$CUDA_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
 ```
-在Terminal輸入
+* 在Terminal輸入
 ```
 source ~/.bashrc
 ```
 
-處理WSL中Mitsuba的GPU加速問題
-參考[Mitsuba on WSL2](https://mitsuba.readthedocs.io/en/stable/src/optix_setup.html)
+* (Optional)處理WSL中Mitsuba的GPU加速問題，參考[Mitsuba on WSL2](https://mitsuba.readthedocs.io/en/stable/src/optix_setup.html)
 
 
 ## References
