@@ -1,4 +1,4 @@
-# NVIDIA Sionna: An Open-Source Library for 6G Physical-Layer Research
+# NVIDIA Sionna: An Open-Source Library for Research on Communication Systems
 
 ## 概述
 
