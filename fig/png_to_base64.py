@@ -6,7 +6,7 @@ def png_to_base64(image_path):
         return encoded_string.decode('utf-8')  # 将bytes转换为字符串
 
 
-image_path = "sionna_simulate_basic.png"  
+image_path = "sionna_simulate_basic_encode.png"  
 base64_string = png_to_base64(image_path)
 # print(base64_string)
 
