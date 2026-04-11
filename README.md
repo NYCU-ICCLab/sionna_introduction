@@ -35,14 +35,14 @@ Sionna支援完整通訊的建模與模擬：
 * PyTorch 2.9+
 
 ### 安裝步驟
-* 下載&安裝conda，可到 https://repo.anaconda.com/archive/ 下載
-* 建立虛擬環境
+* 下載&安裝Anaconda，可到 https://repo.anaconda.com/archive/ 下載
+* 使用conda建立虛擬環境
 ```
 conda create --name sionna_env python=3.13
 conda activate sionna_env
 ```
 * 安裝PyTorch，指令可參考 https://pytorch.org/get-started/locally/
-* 安裝套件
+* 安裝完PyTorch後，安裝以下套件
 ```
 pip install sionna
 pip install jupyter
